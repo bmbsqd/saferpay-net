@@ -1,0 +1,5 @@
+C:\Users\jonas\Desktop\projects\josephs-toiletries\Bmbsqd.SaferPay\bin\Release\Bmbsqd.SaferPay.dll
+C:\Users\jonas\Desktop\projects\josephs-toiletries\Bmbsqd.SaferPay\bin\Release\Bmbsqd.SaferPay.pdb
+C:\Users\jonas\Desktop\projects\josephs-toiletries\Bmbsqd.SaferPay\obj\Release\Bmbsqd.SaferPay.dll
+C:\Users\jonas\Desktop\projects\josephs-toiletries\Bmbsqd.SaferPay\obj\Release\Bmbsqd.SaferPay.pdb
+C:\Users\jonas\Desktop\projects\josephs-toiletries\Bmbsqd.SaferPay\obj\Release\Bmbsqd.SaferPay.csprojResolveAssemblyReference.cache
