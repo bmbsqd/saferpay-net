@@ -47,7 +47,7 @@ namespace Bmbsqd.SaferPay
 
 		public bool IsSuccess
 		{
-			get { return Result == 0; }
+			get { return Result == SaferPayResult.Success; }
 		}
 
 		public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
