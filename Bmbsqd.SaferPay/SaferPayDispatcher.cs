@@ -57,19 +57,21 @@ namespace Bmbsqd.SaferPay
 		{
 			var requestEndpoint = _requestUrlMap[request.RequestType];
 			var url = new Uri( _baseUri, requestEndpoint + "?" + FormatRequestParameters( request ) );
-			var response = await _client.GetAsync( url, HttpCompletionOption.ResponseContentRead );
-			response.EnsureSuccessStatusCode();
+			using( var response = await _client.GetAsync( url, HttpCompletionOption.ResponseContentRead ) )
+			{
+				response.EnsureSuccessStatusCode();
 
-			var text = await response.Content.ReadAsStringAsync();
-			if( !_responseOk.IsMatch( text ) )
-				throw new Exception( "Invalid response: [" + text + "]" );
+				var text = await response.Content.ReadAsStringAsync();
+				if( !_responseOk.IsMatch( text ) )
+					throw new Exception( "Invalid response: [" + text + "]" );
 
-			var values = _responseParser
-				.Matches( text )
-				.Cast<Match>()
-				.Select( m => new KeyValuePair<string, string>( m.Groups["key"].Value, m.Groups["value"].Value ) );
+				var values = _responseParser
+					.Matches( text )
+					.Cast<Match>()
+					.Select( m => new KeyValuePair<string, string>( m.Groups["key"].Value, m.Groups["value"].Value ) );
 
-			return new SaferPayResponse( values );
+				return new SaferPayResponse( values );
+			}
 		}
 
 		public void Dispose()
