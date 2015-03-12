@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Bmbsqd.SaferPay
 {
-	public class SaferPayAgent
+	public class SaferPayAgent : ISaferPayAgent
 	{
 		private readonly ISaferPayDispatcher _dispatcher;
 
