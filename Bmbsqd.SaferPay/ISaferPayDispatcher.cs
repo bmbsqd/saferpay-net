@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace Bmbsqd.SaferPay
 {
-	public interface ISaferPayDispatcher
-	{
-		Task<ISaferPayResponse> DispatchAsync( ISaferPayRequest request );
-	}
+    public interface ISaferPayDispatcher
+    {
+        Task<ISaferPayResponse> DispatchAsync(ISaferPayRequest request);
+    }
 }
