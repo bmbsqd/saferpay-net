@@ -57,11 +57,11 @@ namespace Bmbsqd.SaferPay
 		{
 			var requestEndpoint = _requestUrlMap[request.RequestType];
 			var url = new Uri( _baseUri, requestEndpoint + "?" + FormatRequestParameters( request ) );
-			using( var response = await _client.GetAsync( url, HttpCompletionOption.ResponseContentRead ) )
+			using( var response = await _client.GetAsync( url, HttpCompletionOption.ResponseContentRead ).ConfigureAwait( false ) )
 			{
 				response.EnsureSuccessStatusCode();
 
-				var text = await response.Content.ReadAsStringAsync();
+				var text = await response.Content.ReadAsStringAsync().ConfigureAwait( false );
 				if( !_responseOk.IsMatch( text ) )
 					throw new Exception( "Invalid response: [" + text + "]" );
 

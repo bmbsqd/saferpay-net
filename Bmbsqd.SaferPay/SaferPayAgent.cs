@@ -11,7 +11,7 @@ namespace Bmbsqd.SaferPay
 
 		public SaferPayAgent( ISaferPayDispatcher dispatcher )
 		{
-			if( dispatcher == null ) throw new ArgumentNullException( "dispatcher" );
+			if( dispatcher == null ) throw new ArgumentNullException( nameof( dispatcher ) );
 			_dispatcher = dispatcher;
 		}
 
@@ -41,7 +41,7 @@ namespace Bmbsqd.SaferPay
 				{"IP", ipAddress},
 			};
 
-			var response = await _dispatcher.DispatchAsync( request );
+			var response = await _dispatcher.DispatchAsync( request ).ConfigureAwait( false );
 			return new SaferPayAuthorization( response );
 		}
 
@@ -58,7 +58,7 @@ namespace Bmbsqd.SaferPay
 				{"CVC", cvc}
 			};
 
-			var response = await _dispatcher.DispatchAsync( request );
+			var response = await _dispatcher.DispatchAsync( request ).ConfigureAwait( false );
 			return new SaferPayCredit( response );
 		}
 
@@ -72,7 +72,7 @@ namespace Bmbsqd.SaferPay
 			if( amount != 0 )
 				request["AMOUNT"] = amount.ToString( CultureInfo.InvariantCulture );
 
-			var response = await _dispatcher.DispatchAsync( request );
+			var response = await _dispatcher.DispatchAsync( request ).ConfigureAwait( false );
 			return new SaferPaySettlement( response );
 		}
 
@@ -84,7 +84,7 @@ namespace Bmbsqd.SaferPay
 				{"ACTION", "Cancel"},
 			};
 
-			var response = await _dispatcher.DispatchAsync( request );
+			var response = await _dispatcher.DispatchAsync( request ).ConfigureAwait( false );
 			return new SaferPaySettlement( response );
 		}
 	}
