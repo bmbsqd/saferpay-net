@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bmbsqd.SaferPay", "Bmbsqd.SaferPay\Bmbsqd.SaferPay.csproj", "{1EABCF7F-9B14-491A-96E6-2CCFA099DB7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bmbsqd.SaferPay.Tests", "Bmbsqd.SaferPay.Tests\Bmbsqd.SaferPay.Tests.csproj", "{023ABC40-E2ED-4DAC-9B3B-2AB6B69B4D38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EABCF7F-9B14-491A-96E6-2CCFA099DB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EABCF7F-9B14-491A-96E6-2CCFA099DB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EABCF7F-9B14-491A-96E6-2CCFA099DB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EABCF7F-9B14-491A-96E6-2CCFA099DB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{023ABC40-E2ED-4DAC-9B3B-2AB6B69B4D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023ABC40-E2ED-4DAC-9B3B-2AB6B69B4D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023ABC40-E2ED-4DAC-9B3B-2AB6B69B4D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{023ABC40-E2ED-4DAC-9B3B-2AB6B69B4D38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -13,7 +13,6 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>0cf95948</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
-    <AutoConvertHintPath>true</AutoConvertHintPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,23 +32,60 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreditCardExpiration.cs" />
-    <Compile Include="ISaferPayAgent.cs" />
-    <Compile Include="SaferPayAgent.cs" />
-    <Compile Include="SaferPayAuthorization.cs" />
-    <Compile Include="SaferPayDispatcher.cs" />
-    <Compile Include="ISaferPayDispatcher.cs" />
-    <Compile Include="ISaferPayRequest.cs" />
-    <Compile Include="ISaferPayResponse.cs" />
+    <Compile Include="Models\Amount.cs" />
+    <Compile Include="Models\AuthorizationRequest.cs" />
+    <Compile Include="Models\AuthorizationResponse.cs" />
+    <Compile Include="Models\AuthorizeRequest.cs" />
+    <Compile Include="Models\AuthorizeResponse.cs" />
+    <Compile Include="Models\Dcc.cs" />
+    <Compile Include="Models\DirectDebitResponse.cs" />
+    <Compile Include="Models\InitializationCard.cs" />
+    <Compile Include="Models\InitializationPaymentMeans.cs" />
+    <Compile Include="Models\InitializationResponseRedirect.cs" />
+    <Compile Include="Models\InitializeRequest.cs" />
+    <Compile Include="Models\InitializeResponse.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PayerAddress.cs" />
+    <Compile Include="Models\PaymentOptions.cs" />
+    <Compile Include="Models\PaymentPageResponse.cs" />
+    <Compile Include="Models\RecurringOptions.cs" />
+    <Compile Include="Models\Refund.cs" />
+    <Compile Include="Models\RefundRequest.cs" />
+    <Compile Include="Models\RefundResponse.cs" />
+    <Compile Include="Models\RegisterAlias.cs" />
+    <Compile Include="Models\Alias.cs" />
+    <Compile Include="Models\AuthorizeDirectResponse.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\CaptureRequest.cs" />
+    <Compile Include="Models\CaptureResponse.cs" />
+    <Compile Include="Models\AuthorizationCard.cs" />
+    <Compile Include="Models\ClientInfo.cs" />
+    <Compile Include="Models\Payer.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\AuthorizationPaymentMeans.cs" />
+    <Compile Include="Models\Redirect.cs" />
+    <Compile Include="Models\RegistrationResult.cs" />
+    <Compile Include="Models\RequestBase.cs" />
+    <Compile Include="Models\RequestHeader.cs" />
+    <Compile Include="Models\ResponseBase.cs" />
+    <Compile Include="Models\ResponseHeader.cs" />
+    <Compile Include="Models\ReturnUrls.cs" />
+    <Compile Include="Models\SaferPaySettings.cs" />
+    <Compile Include="Models\ThreeDs.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaferPayRequest.cs" />
-    <Compile Include="SaferPayRequestType.cs" />
-    <Compile Include="SaferPayResponse.cs" />
+    <Compile Include="SaferPayClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
