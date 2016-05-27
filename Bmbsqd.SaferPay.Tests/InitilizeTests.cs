@@ -21,9 +21,6 @@ namespace Bmbsqd.SaferPay.Tests
 		private static SaferPayClient CreateTestClient()
 			=> new SaferPayClient(new HttpClient(), CreateTestDefaultSettings());
 
-
-
-
 		[Test]
 		public async Task InitializeTest()
 		{
@@ -62,10 +59,7 @@ namespace Bmbsqd.SaferPay.Tests
 			Assert.That(response, Is.Not.Null);
 			Assert.That(response.Token, Is.Not.Null);
 			Assert.That(response.Expiration, Is.GreaterThan(DateTimeOffset.UtcNow));
-
-			TestContext.WriteLine(response);
 		}
-
 
 		private Task<InitializeResponse> CreateInitialization(ISaferPayClient client)
 		{
@@ -107,7 +101,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsync(new AuthorizeRequest
+			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
@@ -124,7 +118,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsync(new AuthorizeRequest
+			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
@@ -157,7 +151,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsync(new AuthorizeRequest
+			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
@@ -174,7 +168,6 @@ namespace Bmbsqd.SaferPay.Tests
 				}
 			});
 
-			TestContext.WriteLine(cancel);
 			Assert.That(cancel, Is.Not.Null);
 			Assert.That(cancel.TransactionId, Is.Not.Null);
 		}
@@ -186,7 +179,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsync(new AuthorizeRequest
+			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});

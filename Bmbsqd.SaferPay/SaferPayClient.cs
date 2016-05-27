@@ -19,7 +19,7 @@ namespace Bmbsqd.SaferPay
 	{
 		private readonly HttpClient _httpClient;
 		private readonly SaferPaySettings _settings;
-	
+
 		public SaferPayClient( HttpClient httpClient, SaferPaySettings settings )
 		{
 			_httpClient = httpClient;
@@ -76,13 +76,13 @@ namespace Bmbsqd.SaferPay
 		public static Task<AuthorizeResponse> AuthorizeAsync( this ISaferPayClient client, AuthorizeRequest request )
 			=> client.SendAsync<AuthorizeResponse, AuthorizeRequest>( "Payment/v1/Transaction/Authorize", request );
 
-	    public static Task<CaptureResponse> CaptureAsync(this ISaferPayClient client, CaptureRequest request)
+	    public static Task<CaptureResponse> CaptureAsync( this ISaferPayClient client, CaptureRequest request )
 	        => client.SendAsync<CaptureResponse, CaptureRequest>("Payment/v1/Transaction/Capture", request);
 
-	    public static Task<CancelResponse> CancelAsync(this ISaferPayClient client, CancelRequest request)
-	        => client.SendAsync<CancelResponse, CancelRequest>("Payment/v1/Transaction/Cancel", request);
+	    public static Task<CancelResponse> CancelAsync( this ISaferPayClient client, CancelRequest request )
+	        => client.SendAsync<CancelResponse, CancelRequest>( "Payment/v1/Transaction/Cancel", request );
 
-		public static Task<RefundResponse> RefundAsync(this ISaferPayClient client, RefundRequest request)
-			=> client.SendAsync<RefundResponse, RefundRequest>("Payment/V1/Transaction/Refund", request);
+		public static Task<RefundResponse> RefundAsync( this ISaferPayClient client, RefundRequest request )
+			=> client.SendAsync<RefundResponse, RefundRequest>( "Payment/V1/Transaction/Refund", request );
 	}
 }
