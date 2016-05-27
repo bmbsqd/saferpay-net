@@ -6,6 +6,6 @@ namespace Bmbsqd.SaferPay.Models
 	{
 		public string TransactionId { get; set; }
 		public string OrderId { get; set; }
-		public DateTime Date { get; set; }
+		public DateTimeOffset Date { get; set; }
 	}
 }
