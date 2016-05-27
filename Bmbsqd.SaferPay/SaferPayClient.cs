@@ -19,8 +19,6 @@ namespace Bmbsqd.SaferPay
 	{
 		private readonly HttpClient _httpClient;
 		private readonly SaferPaySettings _settings;
-
-		private string _requestId;
 	
 		public SaferPayClient( HttpClient httpClient, SaferPaySettings settings )
 		{
@@ -30,11 +28,10 @@ namespace Bmbsqd.SaferPay
 
 		private RequestHeader CreateRequestHeader()
 		{
-			_requestId = string.IsNullOrEmpty(_requestId) ? Guid.NewGuid().ToString("n") : _requestId;
 			var header = new RequestHeader {
 				CustomerId = _settings.CustomerId,
 				SpecVersion = "1.3",
-				RequestId = _requestId,
+				RequestId = Guid.NewGuid().ToString("n"),
 				RetryIndicator = 0
 			};
 
