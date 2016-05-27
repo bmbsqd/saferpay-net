@@ -1,8 +1,7 @@
 namespace Bmbsqd.SaferPay.Models
 {
-	public class AuthorizationRequest
+	public class AuthorizationRequest : RequestBase
 	{
-		public RequestHeader RequestHeader { get; set; }
 		public string Terminal { get; set; }
 		public string Token { get; set; }
 		public string VerificationCode { get; set; }
