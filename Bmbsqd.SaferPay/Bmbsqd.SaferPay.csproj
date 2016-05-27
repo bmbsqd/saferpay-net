@@ -47,6 +47,8 @@
     <Compile Include="Models\AuthorizationResponse.cs" />
     <Compile Include="Models\AuthorizeRequest.cs" />
     <Compile Include="Models\AuthorizeResponse.cs" />
+    <Compile Include="Models\CancelRequest.cs" />
+    <Compile Include="Models\CancelResponse.cs" />
     <Compile Include="Models\Dcc.cs" />
     <Compile Include="Models\DirectDebitResponse.cs" />
     <Compile Include="Models\InitializationCard.cs" />

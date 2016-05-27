@@ -1,8 +1,7 @@
 namespace Bmbsqd.SaferPay.Models
 {
-	public class CaptureRequest
+	public class CaptureRequest : RequestBase
 	{
-		public RequestHeader RequestHeader { get; set; }
 		public TransactionReference TransactionReference { get; set; }
 		public Amount Amount { get; set; }
 	}

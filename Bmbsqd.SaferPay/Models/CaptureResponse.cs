@@ -2,9 +2,8 @@ using System;
 
 namespace Bmbsqd.SaferPay.Models
 {
-	public class CaptureResponse
+	public class CaptureResponse : ResponseBase
 	{
-		public ResponseHeader ResponseHeader { get; set; }
 		public string TransactionId { get; set; }
 		public string OrderId { get; set; }
 		public DateTime Date { get; set; }

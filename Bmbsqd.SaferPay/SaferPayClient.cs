@@ -20,6 +20,8 @@ namespace Bmbsqd.SaferPay
 		private readonly HttpClient _httpClient;
 		private readonly SaferPaySettings _settings;
 
+		private string _requestId;
+	
 		public SaferPayClient( HttpClient httpClient, SaferPaySettings settings )
 		{
 			_httpClient = httpClient;
@@ -28,10 +30,11 @@ namespace Bmbsqd.SaferPay
 
 		private RequestHeader CreateRequestHeader()
 		{
+			_requestId = string.IsNullOrEmpty(_requestId) ? Guid.NewGuid().ToString("n") : _requestId;
 			var header = new RequestHeader {
 				CustomerId = _settings.CustomerId,
 				SpecVersion = "1.3",
-				RequestId = Guid.NewGuid().ToString( "n" ),
+				RequestId = _requestId,
 				RetryIndicator = 0
 			};
 
@@ -75,5 +78,14 @@ namespace Bmbsqd.SaferPay
 
 		public static Task<AuthorizeResponse> AuthorizeAsync( this ISaferPayClient client, AuthorizeRequest request )
 			=> client.SendAsync<AuthorizeResponse, AuthorizeRequest>( "Payment/v1/Transaction/Authorize", request );
+
+	    public static Task<CaptureResponse> CaptureAsync(this ISaferPayClient client, CaptureRequest request)
+	        => client.SendAsync<CaptureResponse, CaptureRequest>("Payment/v1/Transaction/Capture", request);
+
+	    public static Task<CancelResponse> CancelAsync(this ISaferPayClient client, CancelRequest request)
+	        => client.SendAsync<CancelResponse, CancelRequest>("Payment/v1/Transaction/Cancel", request);
+
+		public static Task<RefundResponse> RefundAsync(this ISaferPayClient client, RefundRequest request)
+			=> client.SendAsync<RefundResponse, RefundRequest>("Payment/V1/Transaction/Refund", request);
 	}
 }
