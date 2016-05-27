@@ -101,7 +101,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
+			var response = await client.AuthorizeAsync(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
@@ -118,7 +118,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
+			var response = await client.AuthorizeAsync(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
@@ -151,7 +151,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
+			var response = await client.AuthorizeAsync(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
@@ -179,7 +179,7 @@ namespace Bmbsqd.SaferPay.Tests
 
 			var initialization = await CreateInitialization(client);
 
-			var response = await client.AuthorizeAsyncRequest(new AuthorizeRequest
+			var response = await client.AuthorizeAsync(new AuthorizeRequest
 			{
 				Token = initialization.Token
 			});
