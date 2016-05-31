@@ -8,6 +8,8 @@ namespace Bmbsqd.SaferPay
 		private int _year;
 		private int _month;
 
+		private static int FixYear( int y ) => y < 2000 ? 2000 + y : y;
+
 		public CreditCardExpiration( int year, int month )
 		{
 			_year = year % 100;
@@ -17,7 +19,7 @@ namespace Bmbsqd.SaferPay
 		public int Year
 		{
 			get { return _year; }
-			set { _year = value%100; }
+			set { _year = FixYear(value); }
 		}
 
 		public int Month
@@ -36,11 +38,12 @@ namespace Bmbsqd.SaferPay
 		public static CreditCardExpiration Parse( string text )
 		{
 			text = new string( text.Where( char.IsNumber ).ToArray() );
-			var m = text.Substring( 0, 2 );
-			var y = text.Substring( 2 );
+			var m = int.Parse(text.Substring( 0, 2 ));
+			var y = int.Parse(text.Substring( 2 ));
+			
 			return new CreditCardExpiration {
-				_month = int.Parse( m ),
-				_year = int.Parse( y ) % 100
+				_month = m,
+				_year = FixYear(y)
 			};
 		}
 	}
