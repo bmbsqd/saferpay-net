@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bmbsqd.SaferPay</RootNamespace>
     <AssemblyName>Bmbsqd.SaferPay</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>0cf95948</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -51,6 +51,7 @@
     <Compile Include="Models\CancelResponse.cs" />
     <Compile Include="Models\Dcc.cs" />
     <Compile Include="Models\DirectDebitResponse.cs" />
+    <Compile Include="Models\ErrorResponse.cs" />
     <Compile Include="Models\InitializationCard.cs" />
     <Compile Include="Models\InitializationPaymentMeans.cs" />
     <Compile Include="Models\InitializationResponseRedirect.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Models\TransactionReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaferPayClient.cs" />
+    <Compile Include="SaferPayException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

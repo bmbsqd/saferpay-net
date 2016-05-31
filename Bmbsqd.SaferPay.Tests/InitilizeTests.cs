@@ -7,19 +7,21 @@ using NUnit.Framework;
 namespace Bmbsqd.SaferPay.Tests
 {
 	[TestFixture]
-	public class InitializeTests
+	public class FullTests
 	{
-		private static SaferPaySettings CreateTestDefaultSettings()
-			=> new SaferPaySettings
+		private static SaferPaySettings CreateTestDefaultSettings() => new SaferPaySettings
 			{
 				BaseUri = new Uri("https://test.saferpay.com/api/"),
 				CustomerId = "404621",
 				Username = "API_404621_78913645",
-				Password = "JsonApiPwd1_h5jGCcmN"
+				Password = "JsonApiPwd1_h5jGCcmN",
+				TerminalId = "17812438",
 			};
 
 		private static SaferPayClient CreateTestClient()
 			=> new SaferPayClient(new HttpClient(), CreateTestDefaultSettings());
+
+
 
 		[Test]
 		public async Task InitializeTest()

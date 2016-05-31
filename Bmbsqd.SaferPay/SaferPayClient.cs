@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Bmbsqd.SaferPay
 {
-	public interface ISaferPayClient
+	public interface ISaferPayClient : IDisposable
 	{
 		Task<TResponse> SendAsync<TResponse, TRequest>( string path, TRequest request )
 			where TRequest : RequestBase
@@ -31,7 +31,7 @@ namespace Bmbsqd.SaferPay
 			var header = new RequestHeader {
 				CustomerId = _settings.CustomerId,
 				SpecVersion = "1.3",
-				RequestId = Guid.NewGuid().ToString("n"),
+				RequestId = Guid.NewGuid().ToString( "n" ),
 				RetryIndicator = 0
 			};
 
@@ -59,11 +59,18 @@ namespace Bmbsqd.SaferPay
 			};
 
 			var response = await _httpClient.SendAsync( message, HttpCompletionOption.ResponseContentRead );
-			response.EnsureSuccessStatusCode();
-
 			var responseText = await response.Content.ReadAsStringAsync();
+			if( !response.IsSuccessStatusCode ) {
+				var errorResponse = JsonConvert.DeserializeObject<ErrorResponse>( responseText );
+				throw new SaferPayException( response.StatusCode, errorResponse );
+			}
 
 			return JsonConvert.DeserializeObject<TResponse>( responseText );
+		}
+
+		public void Dispose()
+		{
+			_httpClient.Dispose();
 		}
 	}
 
@@ -76,11 +83,11 @@ namespace Bmbsqd.SaferPay
 		public static Task<AuthorizeResponse> AuthorizeAsync( this ISaferPayClient client, AuthorizeRequest request )
 			=> client.SendAsync<AuthorizeResponse, AuthorizeRequest>( "Payment/v1/Transaction/Authorize", request );
 
-	    public static Task<CaptureResponse> CaptureAsync( this ISaferPayClient client, CaptureRequest request )
-	        => client.SendAsync<CaptureResponse, CaptureRequest>("Payment/v1/Transaction/Capture", request);
+		public static Task<CaptureResponse> CaptureAsync( this ISaferPayClient client, CaptureRequest request )
+			=> client.SendAsync<CaptureResponse, CaptureRequest>( "Payment/v1/Transaction/Capture", request );
 
-	    public static Task<CancelResponse> CancelAsync( this ISaferPayClient client, CancelRequest request )
-	        => client.SendAsync<CancelResponse, CancelRequest>( "Payment/v1/Transaction/Cancel", request );
+		public static Task<CancelResponse> CancelAsync( this ISaferPayClient client, CancelRequest request )
+			=> client.SendAsync<CancelResponse, CancelRequest>( "Payment/v1/Transaction/Cancel", request );
 
 		public static Task<RefundResponse> RefundAsync( this ISaferPayClient client, RefundRequest request )
 			=> client.SendAsync<RefundResponse, RefundRequest>( "Payment/V1/Transaction/Refund", request );
