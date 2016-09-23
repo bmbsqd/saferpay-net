@@ -21,12 +21,19 @@
 	},
 	"dependencies": {
 		"Newtonsoft.Json": "9.0.1",
-		"System.Linq": "4.1.0",
-		"System.Net.Http": "4.1.0"
 	},
 	"frameworks": {
 		"netstandard1.3": {
-			"imports": "dnxcore50"
+			"imports": "dnxcore50",
+			"dependencies": {
+				"System.Linq": "4.1.0",
+				"System.Net.Http": "4.1.0"
+			}
+		},
+		"net46": {
+			"dependencies": {
+				"System.Net.Http": "4.1.0"
+			}
 		}
 	}
 }
