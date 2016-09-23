@@ -1,0 +1,32 @@
+{
+	"title": "Saferpay JSON API",
+	"language": "en",
+	"version": "0.2.0-*",
+	"copyright": "Bombsquad Inc 2016",
+	"authors": [ "BMBSQD" ],
+	"description": "SaferPay JSON API implementation in C#",
+	"packOptions": {
+		"repository": {
+			"type": "git",
+			"url": "https://github.com/bmbsqd/saferpay-net/"
+		},
+		"owners": [ "BMBSQD" ],
+		"iconUrl": "http://www.gravatar.com/avatar/778137d42770f739df317b3cde5454ed.png?s=128",
+		"licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+		"requireLicenseAcceptance": false,
+		"releaseNotes": "Corification!",
+		"summary": "Faster",
+		"tags": [ "saferpay", "async", "rest", "json" ]
+
+	},
+	"dependencies": {
+		"Newtonsoft.Json": "9.0.1",
+		"System.Linq": "4.1.0",
+		"System.Net.Http": "4.1.0"
+	},
+	"frameworks": {
+		"netstandard1.3": {
+			"imports": "dnxcore50"
+		}
+	}
+}
