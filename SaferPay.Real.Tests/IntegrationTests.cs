@@ -2,10 +2,11 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using SaferPay.Models;
+using SaferPay.Tests.Shared;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace SaferPay.Tests {
+namespace SaferPay.Real.Tests {
 	public class IntegrationTests {
 
 		[Fact]

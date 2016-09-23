@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using SaferPay.Models;
+using SaferPay.Tests.Shared;
 using Xunit;
 
 namespace SaferPay.Tests {

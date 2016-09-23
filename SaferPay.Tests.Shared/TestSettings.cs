@@ -2,7 +2,7 @@ using System.IO;
 using Newtonsoft.Json;
 using SaferPay.Models;
 
-namespace SaferPay.Tests {
+namespace SaferPay.Tests.Shared {
 	public static class TestSettings {
 		private const string SecretsDirectory = "secrets";
 
