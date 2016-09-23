@@ -1,4 +1,4 @@
-# Made my Bombsquad Inc #
+# SaferPay JSON API implemented in C# / dotnet core
 
 ----------
 ## How to run tests
