@@ -1,10 +1,14 @@
 {
+	"name": "saferpay-net",
 	"title": "Saferpay JSON API",
 	"language": "en",
 	"version": "0.2.0-*",
 	"copyright": "Bombsquad Inc 2016",
 	"authors": [ "bmbsqd", "durango" ],
 	"description": "SaferPay JSON API implementation in C#",
+	"buildOptions": {
+		"debugType": "portable"
+	},
 	"packOptions": {
 		"repository": {
 			"type": "git",
