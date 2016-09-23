@@ -18,11 +18,16 @@ namespace SaferPay {
 
 		protected readonly HttpClient _httpClient;
 		protected readonly SaferPaySettings _settings;
+		private readonly JsonSerializerSettings _jsonSerializerSettings;
 
-		public SaferPayClient( HttpClient httpClient, SaferPaySettings settings )
+		public SaferPayClient( HttpClient httpClient, SaferPaySettings settings ) : this( httpClient, settings, JsonSettings.Default )
+		{ }
+
+		public SaferPayClient( HttpClient httpClient, SaferPaySettings settings, JsonSerializerSettings jsonSerializerSettings )
 		{
 			_httpClient = httpClient;
 			_settings = settings;
+			_jsonSerializerSettings = jsonSerializerSettings;
 		}
 
 		protected virtual string GenerateRequestId() => Guid.NewGuid().ToString( "n" );
@@ -41,7 +46,7 @@ namespace SaferPay {
 			if( request == null ) throw new ArgumentNullException( nameof( request ) );
 			request.RequestHeader = CreateRequestHeader();
 
-			var text = JsonConvert.SerializeObject( request );
+			var text = JsonConvert.SerializeObject( request, _jsonSerializerSettings );
 			var uri = new Uri( _settings.BaseUri, path );
 
 			var message = new HttpRequestMessage( HttpMethod.Post, uri ) {
@@ -57,11 +62,11 @@ namespace SaferPay {
 			var response = await _httpClient.SendAsync( message, HttpCompletionOption.ResponseContentRead );
 			var responseText = await response.Content.ReadAsStringAsync();
 			if( !response.IsSuccessStatusCode ) {
-				var errorResponse = JsonConvert.DeserializeObject<ErrorResponse>( responseText );
+				var errorResponse = JsonConvert.DeserializeObject<ErrorResponse>( responseText, _jsonSerializerSettings );
 				throw new SaferPayException( response.StatusCode, errorResponse );
 			}
 
-			return JsonConvert.DeserializeObject<TResponse>( responseText );
+			return JsonConvert.DeserializeObject<TResponse>( responseText, _jsonSerializerSettings );
 		}
 
 		public virtual void Dispose() => _httpClient.Dispose();
