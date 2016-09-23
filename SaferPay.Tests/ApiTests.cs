@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using SaferPay;
 using SaferPay.Models;
 using Xunit;
 
-namespace Bmbsqd.SaferPay.Tests {
-	public class FullTests {
-		private static SaferPaySettings CreateTestDefaultSettings() => new SaferPaySettings {
-			BaseUri = new Uri( "https://test.saferpay.com/api/" ),
-			CustomerId = "404621",
-			Username = "API_404621_78913645",
-			Password = "JsonApiPwd1_h5jGCcmN",
-			TerminalId = "17812438",
-		};
-
+namespace SaferPay.Tests {
+	public class ApiTests {
 		private static SaferPayClient CreateTestClient()
-			=> new SaferPayClient( new HttpClient(), CreateTestDefaultSettings() );
+			=> new SaferPayClient( new HttpClient(), TestSettings.LoadTestSettings() );
 
 
 
